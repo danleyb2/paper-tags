@@ -14,11 +14,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+    <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script><script src="../../wct-browser-legacy/browser.js"></script>script>
 
     <!-- Step 1: import the element to test -->
-    <link rel="import" href="../paper-tags-input.html">
+    <script type="module" src="../paper-tags-input.js"></script>
 
   </head>
   <body>
@@ -31,20 +30,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       Polymer({
         is: 'paper-tags-tester',
         properties: {
-          tags: {
-            type: Array,
-            notify: true,
-            value: function() {
-              return [];
-            }
-          }
-        },
-      });
-      </script>
-    </dom-module>
-
-    <test-fixture id="tester">
-      <template>
+      <script type="module">
+import '../paper-tags-input.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+Polymer({
+  is: 'paper-tags-tester',
+  properties: {
+    tags: {
+      type: Array,
+      notify: true,
+      value: function() {
+        return [];
+      }
+    }
+  },
+});
+</script>>
         <paper-tags-tester></paper-tags-tester>
       </template>
     </test-fixture>
@@ -56,16 +57,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           tester = fixture('tester')
         });
 
-        test('adding tag sets the items value', function() {
+  <script type="module">
+import '../paper-tags-input.js';
+suite('<paper-tags-input>', function() {
+  var tester;
+  setup(function() {
+    tester = fixture('tester')
+  });
 
-          tester.$.tags.$.tagInput.value = 'foobar';
-          MockInteractions.pressEnter(tags.$.tagInput);
+  test('adding tag sets the items value', function() {
 
-          assert.equal(1, tester.tags.length, 'unexpected number of tags');
-          assert.equal('foobar', tester.tags[0], 'unexpected tag value');
-        });
-      });
-    </script>
+    tester.$.tags.$.tagInput.value = 'foobar';
+    MockInteractions.pressEnter(tags.$.tagInput);
 
-  </body>
-</html>
+    assert.equal(1, tester.tags.length, 'unexpected number of tags');
+    assert.equal('foobar', tester.tags[0], 'unexpected tag value');
+  });
+});
+</script>

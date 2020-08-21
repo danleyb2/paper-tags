@@ -1,9 +1,4 @@
 {
-  "name": "paper-tags",
-  "version": "1.4.2",
-  "authors": [
-    "christophe.geiser <christophe.geiser@e-smile.org>"
-  ],
   "description": "paper-input and paper-dropdown-menu with tags",
   "keywords": [
     "web-component",
@@ -15,34 +10,48 @@
     "input",
     "paper-input"
   ],
-  "main": "paper-tags-import.html",
-  "license": "https://github.com/PolymerEl/LICENCE",
-  "homepage": "https://github.com/PolymerEl/paper-tags",
-  "ignore": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/Weaverize/paper-tags.git"
   },
+  "homepage": "https://github.com/PolymerEl/paper-tags",
+  "name": "paper-tags",
+  "version": "1.4.2",
+  "authors": [
+    "christophe.geiser <christophe.geiser@e-smile.org>"
+  ],
+  "main": "paper-tags-import.js",
+  "license": "https://github.com/PolymerEl/LICENCE",
+  "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0",
-    "paper-input": "PolymerElements/paper-input#^2.0.0",
-    "paper-badge": "PolymerElements/paper-badge#^2.0.0",
-    "paper-icon-button": "PolymerElements/paper-icon-button#^2.0.0",
-    "iron-icons": "PolymerElements/iron-icons#^2.0.0",
-    "iron-icon": "PolymerElements/iron-icon#^2.0.0",
-    "iron-a11y-keys": "PolymerElements/iron-a11y-keys#^2.0.0",
-    "iron-behaviors": "PolymerElements/iron-behaviors#^2.0.0",
-    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#^2.0.0",
-    "paper-item": "PolymerElements/paper-item#^2.0.0",
-    "paper-ripple": "PolymerElements/paper-ripple#^2.0.0",
-    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.0",
-    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
-    "web-animations-js": "^2.3.1"
+    "@polymer/iron-a11y-keys": "^3.0.1",
+    "@polymer/iron-behaviors": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/iron-validatable-behavior": "^3.0.1",
+    "@polymer/neon-animation": "^3.0.1",
+    "@polymer/paper-badge": "^3.1.0",
+    "@polymer/paper-dropdown-menu": "^3.1.0",
+    "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/paper-input": "^3.2.1",
+    "@polymer/paper-item": "^3.0.1",
+    "@polymer/paper-listbox": "^3.0.1",
+    "@polymer/paper-ripple": "^3.0.2",
+    "@polymer/polymer": "^3.4.1",
+    "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
-  }
+    "@polymer/iron-component-page": "^4.0.1",
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@webcomponents/webcomponentsjs": "^2.4.4",
+    "wct-browser-legacy": "^1.0.2",
+    "web-component-tester": "^4.3.7"
+  },
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "author": "christophe.geiser <christophe.geiser@e-smile.org>"
 }
