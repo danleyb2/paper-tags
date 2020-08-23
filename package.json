@@ -38,6 +38,7 @@
     "@polymer/paper-listbox": "^3.0.1",
     "@polymer/paper-ripple": "^3.0.2",
     "@polymer/polymer": "^3.4.1",
+    "hydrolysis": "^1.25.0",
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {

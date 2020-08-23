@@ -14,34 +14,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>paper-tags Demo</title>
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>2.0 doesn't import it -->
-  <script type="module" src="../../@polymer/web-animations-js/web-animations.js"></script>
-  <script type="module" src="../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
-  <script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-  <script type="module" src="../../@polymer/paper-dropdown-menu/paper-dropdown-menu.js"></script>
-  <script type="module" src="../../@polymer/paper-item/paper-item.js"></script>
-  <script type="module" src="../paper-tags.js"></script>
-  <script type="module" src="../paper-tags-input.js"></script>
-  <script type="module" src="../paper-tags-dropdown.js"></script>
-  <script type="module" src="../../hydrolysis/hydrolysis.js"></script>
-  <style is="custom-style" include="demo-pages-shared-styles">
-  <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-const $_documentContainer = document.createElement('template');
+  <script type="module">
+    import  "@webcomponents/webcomponentsjs/webcomponents-bundle.js";
+    import  "@polymer/web-animations-js/web-animations.js";
+    import  "@polymer/iron-demo-helpers/demo-snippet.js";
+    import  "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+    import  "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+    import  "@polymer/paper-item/paper-item.js";
+    import  "paper-tags.js";
+    import  "paper-tags-input.js";
+    import  "paper-tags-dropdown.js";
+    import  "hydrolysis/hydrolysis.js";
+    import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
-$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
-  </style>`;
+    const template = html `<custom-style><style is="custom-style" include="demo-pages-shared-styles"></style><custom-style>`
+    const $_documentContainer = document.createElement('template');
 
-document.head.appendChild($_documentContainer.content);
-</script>
+    $_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">  </style>`;
+    document.head.appendChild($_documentContainer.content);
+  </script>
 <body>
   <div class="vertical-section-container centered">
     <h4>paper-tags</h4>
