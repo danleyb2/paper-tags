@@ -15,7 +15,7 @@ import '@polymer/polymer/polymer-legacy.js';
  * @demo demo/index.html
  */
 
-ValueArrayFirebaseMixin = function(superClass) {
+export var ValueArrayFirebaseMixin = function(superClass) {
     return class extends superClass {
         static get properties() {
             return  {

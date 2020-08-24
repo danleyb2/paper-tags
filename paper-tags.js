@@ -43,7 +43,7 @@ import '@polymer/paper-badge/paper-badge.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@polymer/iron-icon/iron-icon.js';
-import './paper-tags-mixin.js';
+import  {PaperTagsMixin} from './paper-tags-mixin.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 class PaperTags extends PaperTagsMixin(PolymerElement) {

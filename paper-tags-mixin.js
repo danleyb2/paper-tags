@@ -9,13 +9,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 import '@polymer/polymer/polymer-legacy.js';
 
-import './value-array-firebase-mixin.js';
+import {ValueArrayFirebaseMixin} from './value-array-firebase-mixin.js';
 /**
  * `Polymer.PaperTagsMixin` defines recurent properties in paper-tags family (paper-tags, paper-tags-input, paper-tags-dropdown)
  *
  * @demo demo/index.html
  */
-PaperTagsMixin = function(superClass) {
+export var PaperTagsMixin = function(superClass) {
     return class extends ValueArrayFirebaseMixin(superClass) {
         static get properties() {
             return  {

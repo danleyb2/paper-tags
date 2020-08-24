@@ -14,52 +14,77 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>paper-tags Demo</title>
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2.0.0/webcomponents-loader.js"></script>
+  <script src="node_modules/web-animations-js/web-animations.min.js"></script>
+  <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
   <script type="module">
-    import  "@webcomponents/webcomponentsjs/webcomponents-bundle.js";
-    import  "@polymer/web-animations-js/web-animations.js";
+    import '@polymer/neon-animation/neon-animated-pages.js';
+    import 'web-animations-js/web-animations-next-lite.min.js';
+    import '@polymer/neon-animation/neon-animatable.js';
+    import '@polymer/neon-animation/animations/slide-from-right-animation.js';
+    import '@polymer/neon-animation/animations/slide-left-animation.js';
     import  "@polymer/iron-demo-helpers/demo-snippet.js";
     import  "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
     import  "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
     import  "@polymer/paper-item/paper-item.js";
-    import  "paper-tags.js";
-    import  "paper-tags-input.js";
-    import  "paper-tags-dropdown.js";
+    import  "../paper-tags";
+    import  "../paper-tags-input.js";
+    import  "../paper-tags-dropdown.js";
     import  "hydrolysis/hydrolysis.js";
     import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
     const template = html `<custom-style><style is="custom-style" include="demo-pages-shared-styles"></style><custom-style>`
-    const $_documentContainer = document.createElement('template');
-
-    $_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">  </style>`;
-    document.head.appendChild($_documentContainer.content);
+    document.body.appendChild(template.content);
   </script>
+   <script type="text/javascript">
+    const _customElementsDefine = window.customElements.define;
+    window.customElements.define = (name, cl, conf) => {
+        if (!customElements.get(name)) {
+            _customElementsDefine.call(window.customElements, name, cl, conf);
+        }
+        else {
+            console.warn(`${name} has been defined twice`);
+        }
+    };
+
+</script>
+  <!-- <script src="../../webcomponentsjs/webcomponents-lite.js"></script> -->
+  <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
+  <!-- <link rel="import" href="../../neon-animation/web-animations.html"> -->
+  <!-- <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
+  <link rel="import" href="../../paper-item/paper-item.html">
+  <link rel="import" href="../paper-tags.html">
+  <link rel="import" href="../paper-tags-input.html">
+  <link rel="import" href="../paper-tags-dropdown.html">
+  <link rel="import" href="../../hydrolysis/hydrolysis.html">
+  <style is="custom-style" include="demo-pages-shared-styles">
+  </style> -->
+</head>
+
 <body>
   <div class="vertical-section-container centered">
     <h4>paper-tags</h4>
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-    <h4>paper-tags</h4>
     <demo-snippet class="centered-demo">
       <template>
-        <paper-tags readonly="" tag-tpl_="{&quot;id&quot;:null, &quot;label&quot;:&quot;hello&quot;}" label-path="label" items="[{&quot;id&quot;:1, &quot;l&quot; :&quot;me&quot;, &quot;label&quot;:&quot;hello&quot;},{&quot;id&quot;:2, &quot;label&quot;:&quot;new&quot;}]"></paper-tags>
+        <paper-tags readonly  tag-tpl_='{"id":null, "label":"hello"}' label-path="label" items='[{"id":1, "l" :"me", "label":"hello"},{"id":2, "label":"new"}]'></paper-tags>
       </template>
     </demo-snippet>
-  </div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>paper-tags-input</h4>
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+  </div>
+  <div class="vertical-section-container centered">
     <h4>paper-tags-input</h4>
     <demo-snippet class="centered-demo">
       <template>
         <dom-bind>
           <template>
-            <paper-tags-input id="control" label="input label" show-counter="tags" items="[&quot;hello&quot;, &quot;new&quot;]" value="{{value}}" value-join="{{valueJoin}}" maxlength="10"></paper-tags-input>
+            <paper-tags-input id="control" 
+            label="input label" 
+            show-counter="tags" 
+            items='["hello", "new"]' 
+            value="{{value}}" 
+            value-join="{{valueJoin}}" 
+            maxLength="10"></paper-tags-input>
             <div>
               <div>value: {{valueJoin}}</div>
               <div>input value: {{value}}</div>
@@ -68,14 +93,8 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
         </dom-bind>
       </template>
     </demo-snippet>
-  </div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>paper-tags-dropdown</h4>
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+  </div>
+  <div class="vertical-section-container centered">
     <h4>paper-tags-dropdown</h4>
     <demo-snippet class="centered-demo">
       <template>
@@ -88,19 +107,13 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
               }
             }
             </style>
-            <paper-tags-dropdown id="control" items="{{items}}" label-path="label" noink="" label="label dropdown" value-array="[&quot;5&quot;]"></paper-tags-dropdown>
+            <paper-tags-dropdown id="control" items="{{items}}" label-path="label" noink label="label dropdown" value-array='["5"]'></paper-tags-dropdown>
           </template>
         </dom-bind>
       </template>
     </demo-snippet>
-  </div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>paper-tags-dropdown string array</h4>
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+  </div>
+  <div class="vertical-section-container centered">
     <h4>paper-tags-dropdown string array</h4>
     <demo-snippet class="centered-demo">
       <template>
@@ -113,63 +126,48 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
               }
             }
             </style>
-            <paper-tags-dropdown id="stringControl" items="[&quot;Doe&quot;, &quot;Rae&quot;, &quot;Mee&quot;, &quot;Faa&quot;, &quot;So&quot;, &quot;Laa&quot;, &quot;Tee&quot;, &quot;Daa&quot;]" allow-search="" noink="" label="label dropdown" value-array="[&quot;Rae&quot;]">
+            <paper-tags-dropdown id="stringControl" items='["Doe", "Rae", "Mee", "Faa", "So", "Laa", "Tee", "Daa"]' allow-search noink label="label dropdown" value-array='["Rae"]'>
             </paper-tags-dropdown>
           </template>
         </dom-bind>
       </template>
     </demo-snippet>
-  </div>`;
+  </div>
+  <script>
+  window.addEventListener('WebComponentsReady', function() {
+    const tagDropdown = document.querySelector('#tagDropdown');
+    var data = [{
+      id: '1',
+      desc: 'description 1',
+      label: 'Title 1'
+    }, {
+      id: '12345',
+      desc: 'description 4',
+      label: 'new items'
+    }, {
+      id: '5',
+      desc: 'description 4',
+      label: 'Hello'
+    }, {
+      id: '6',
+      desc: 'description 4',
+      label: 'Bar'
+    }];
+    tagDropdown.$.control.getTagStyle = function(item) {
+      console.info("ITEM", item);
+      return 'background-color: red; color: white;'
+    }
+    setTimeout(function() {
+      tagDropdown.$.control.set('items', data);
+    }, 100);
+    tagDropdown.$.control.addEventListener('tag-removed', function(e, d) {
+      console.log('tag-removed', e, d);
+    }.bind(this));
+    tagDropdown.$.control.addEventListener('tag-added', function(e, d) {
+      console.log('tag-added', e, d);
+    }.bind(this));
+  });
+  </script>
+</body>
 
-document.body.appendChild($_documentContainer.content);
-</script>.addEventListener('WebComponentsReady', function() {
-
-<script type="module">
-import '@polymer/neon-animation/web-animations.js';
-import '@polymer/iron-demo-helpers/demo-snippet.js';
-import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
-import '@polymer/paper-item/paper-item.js';
-import '../paper-tags.js';
-import '../paper-tags-input.js';
-import '../paper-tags-dropdown.js';
-import 'hydrolysis/hydrolysis.js';
-
-const tagDropdown = document.querySelector('#tagDropdown');
-
-var data = [{
-  id: '1',
-  desc: 'description 1',
-  label: 'Title 1'
-
-}, {
-  id: '12345',
-  desc: 'description 4',
-  label: 'new items'
-}, {
-  id: '5',
-  desc: 'description 4',
-  label: 'Hello'
-}, {
-  id: '6',
-  desc: 'description 4',
-  label: 'Bar'
-}];
-
-tagDropdown.$.control.getTagStyle = function(item) {
-  console.info("ITEM", item);
-  return 'background-color: red; color: white;'
-}
-
-setTimeout(function() {
-  tagDropdown.$.control.set('items', data);
-}, 100);
-
-tagDropdown.$.control.addEventListener('tag-removed', function(e, d) {
-  console.log('tag-removed', e, d);
-}.bind(this));
-
-tagDropdown.$.control.addEventListener('tag-added', function(e, d) {
-  console.log('tag-added', e, d);
-}.bind(this));
-</script>
+</html>

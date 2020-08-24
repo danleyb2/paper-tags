@@ -36,7 +36,7 @@ import '@polymer/paper-input/paper-input.js';
 import '@polymer/iron-a11y-keys/iron-a11y-keys.js';
 import '@polymer/paper-styles/typography.js';
 import './paper-tags.js';
-import './paper-tags-mixin.js';
+import {PaperTagsMixin} from './paper-tags-mixin.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 class PaperTagsInput extends PaperTagsMixin(PolymerElement) {
