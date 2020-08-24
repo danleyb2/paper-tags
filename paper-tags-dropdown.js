@@ -5,7 +5,7 @@ import { IronButtonState } from '@polymer/iron-behaviors/iron-button-state.js';
 import { IronControlState } from '@polymer/iron-behaviors/iron-control-state.js';
 import { IronFormElementBehavior } from '@polymer/iron-form-element-behavior/iron-form-element-behavior.js';
 import { IronValidatableBehavior } from '@polymer/iron-validatable-behavior/iron-validatable-behavior.js';
-// import {NeonAnimationRunnerBehavior} from '@polymer/neon-animation/neon-animation-runner-behavior.js';
+import {NeonAnimationRunnerBehavior} from '@polymer/neon-animation/neon-animation-runner-behavior.js';
 import '@polymer/polymer/polymer-legacy.js';
 import '@polymer/neon-animation/animations/scale-down-animation.js';
 import '@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
@@ -27,7 +27,7 @@ class PaperTagsDropdown extends mixinBehaviors([
   IronFormElementBehavior,
   IronButtonState,
   IronControlState,
-  // NeonAnimationRunnerBehavior,
+  NeonAnimationRunnerBehavior,
 ], PolymerElement) {
 
     static get is() {
@@ -67,7 +67,7 @@ class PaperTagsDropdown extends mixinBehaviors([
             value: ''
             },
 
-            /* 
+            /*
             * `allowSearch` true to allow filter items
             */
             allowSearch : {
@@ -252,7 +252,7 @@ class PaperTagsDropdown extends mixinBehaviors([
             type: Object
             },
 
-            /* 
+            /*
             * `allowAdd`  true to allow adding custom tags (they will be reflected in items)
             */
             allowAdd: {
@@ -297,7 +297,7 @@ class PaperTagsDropdown extends mixinBehaviors([
                 return this.getTagStyle.bind(this);
                 }
             },
-            
+
 
         };
     }
@@ -314,7 +314,7 @@ class PaperTagsDropdown extends mixinBehaviors([
           'esc': 'close'
         };
     }
-  
+
     static get hostAttributes() {
         return {
           role: 'combobox',
@@ -322,7 +322,7 @@ class PaperTagsDropdown extends mixinBehaviors([
           'aria-haspopup': 'true'
         };
     }
-  
+
     static get observers() {
         return [
           '_observeItems(items)',
@@ -342,7 +342,7 @@ class PaperTagsDropdown extends mixinBehaviors([
           this.disabled = false;
         }
     }
-  
+
     _observeItems(items) {
         // run every time item is set or reset
         if (items) {
@@ -356,14 +356,14 @@ class PaperTagsDropdown extends mixinBehaviors([
           delete this._isInitiatingItems;
         }
     }
-  
+
     _observeValueArray(splices) {
         // run on any change to the valueArray
         if(this.items) {
           this.set('tagItems', this._filterValueItems(this.valueArray));
         }
     }
-  
+
     _filterValueItems(valueArray) {
         if (valueArray && this.items && this.items.length > 0) {
           return this.items.filter(item => {
@@ -377,7 +377,7 @@ class PaperTagsDropdown extends mixinBehaviors([
         }
         return [];
     }
-  
+
     ready() {
         super.ready();
         this.$.menuButton.ignoreSelect = true;
@@ -386,10 +386,10 @@ class PaperTagsDropdown extends mixinBehaviors([
           this.set('valueArray', Object.keys(this.valueObject));
         }
     }
-  
+
     connectedCallback() {
         super.connectedCallback();
-  
+
         this.keyTarget = this.$.tagInput;
         // NOTE(cdata): Due to timing, a preselected value in a `IronSelectable`
         // child will cause an `iron-select` event to fire while the element is
@@ -404,11 +404,11 @@ class PaperTagsDropdown extends mixinBehaviors([
         //   name: 'scale-down-animation',
         //   node: this.$.animatable,
         // };
-    
+
         // setTimeout(() => this.playAnimation(), 1000);
 
     }
-  
+
       /**
        * The content element that is contained by the dropdown menu, if any.
        */
@@ -421,21 +421,21 @@ class PaperTagsDropdown extends mixinBehaviors([
           }
         }
     }
-  
+
       /**
        * Show the dropdown content.
        */
     open() {
         this.$.menuButton.open();
     }
-  
+
       /**
        * Hide the dropdown content.
        */
     close() {
         this.$.menuButton.close();
     }
-  
+
     _computeKeys() {
         var s = ' ';
         for (var i = 48; i <= 126; i++) {
@@ -445,7 +445,7 @@ class PaperTagsDropdown extends mixinBehaviors([
         s += 'backspace' + ' ';
         return s;
     }
-  
+
     _computeFilter(string) {
         // return a filter function for the current search string
         if (!string) {
@@ -456,9 +456,9 @@ class PaperTagsDropdown extends mixinBehaviors([
           const label = this.doGet(this.labelPath, item);
           return label && label.toLowerCase().indexOf(string) > -1;
         };
-  
+
     }
-  
+
       /**
        * A handler that is called when the dropdown is tapped.
        *
@@ -469,9 +469,9 @@ class PaperTagsDropdown extends mixinBehaviors([
           this.open();
         }
     }
-  
-      /* 
-       * `doGet` 
+
+      /*
+       * `doGet`
        */
     doGet(path, item) {
           if(!path) {
@@ -479,27 +479,27 @@ class PaperTagsDropdown extends mixinBehaviors([
           }
           return this.get(path, item);
     }
-  
+
     getLabel(item) {
         if(this.labelPath) {
           return this.doGet(this.labelPath, item);
         }
-    }  
-      
+    }
+
     getName(item) {
         if(this.keyPath) {
           return this.doGet(this.keyPath, item);
         }
-    }  
-      
+    }
+
     getStyle(item) {
         return '';
-    }  
-  
+    }
+
     getTagStyle(item) {
         return '';
-    }  
-  
+    }
+
     _onAscii(event) {
         if(!this.allowAdd) {
           this.async(function() {
@@ -509,7 +509,7 @@ class PaperTagsDropdown extends mixinBehaviors([
           }, 30);
         }
     }
-  
+
       /**
        * Compute the vertical offset of the menu based on the value of
        * `noLabelFloat`.
@@ -524,7 +524,7 @@ class PaperTagsDropdown extends mixinBehaviors([
         // input has a floating label.
         return noLabelFloat ? -4 : 8;
     }
-  
+
       /**
        * Returns false if the element is required and does not have a selection,
        * and true otherwise.
@@ -535,7 +535,7 @@ class PaperTagsDropdown extends mixinBehaviors([
     _getValidity(_value) {
         return this.disabled || !this.required || (this.required && !!this.value);
     }
-  
+
     _openedChanged() {
         if(!this.opened) {
           this.searchString = ''  ;
@@ -546,7 +546,7 @@ class PaperTagsDropdown extends mixinBehaviors([
           e.setAttribute('aria-expanded', this.opened ? 'true' : 'false');
         }
     }
-  
+
     _stopEventPropagation(e) {
           e.stopPropagation();
     }
@@ -637,8 +637,10 @@ class PaperTagsDropdown extends mixinBehaviors([
                         on-keyup="_stopEventPropagation"></paper-input>
                     </template>
                     <template is="dom-repeat" items="[[items]]" filter="{{_computeFilter(searchString)}}">
+                    
                     <!-- <paper-item name="[[doGet(keyPath,item)]]">[[doGet(labelPath,item)]]</paper-item> -->
                     <paper-item style$="[[getStyle(item)]]" name="[[getName(item)]]">[[getLabel(item)]]</paper-item>
+                    
                     </template>
                 </paper-listbox>
                 <slot id="content" name="dropdown-content"></slot>
@@ -646,7 +648,7 @@ class PaperTagsDropdown extends mixinBehaviors([
         
         `;
     }
-    
+
 }
 
 customElements.define(PaperTagsDropdown.is, PaperTagsDropdown)

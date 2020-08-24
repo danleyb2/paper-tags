@@ -15,11 +15,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>paper-tags Demo</title>
   <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2.0.0/webcomponents-loader.js"></script>
-  <script src="node_modules/web-animations-js/web-animations.min.js"></script>
+  <!--<script src="/node_modules/web-animations-js/web-animations.min.js"></script>-->
   <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
   <script type="module">
     import '@polymer/neon-animation/neon-animated-pages.js';
-    import 'web-animations-js/web-animations-next-lite.min.js';
+    // import 'web-animations-js/web-animations-next-lite.min.js';
     import '@polymer/neon-animation/neon-animatable.js';
     import '@polymer/neon-animation/animations/slide-from-right-animation.js';
     import '@polymer/neon-animation/animations/slide-left-animation.js';
@@ -30,7 +30,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     import  "../paper-tags";
     import  "../paper-tags-input.js";
     import  "../paper-tags-dropdown.js";
-    import  "hydrolysis/hydrolysis.js";
     import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
     const template = html `<custom-style><style is="custom-style" include="demo-pages-shared-styles"></style><custom-style>`
@@ -59,18 +58,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </demo-snippet>
   </div>
+
   <div class="vertical-section-container centered">
     <h4>paper-tags-input</h4>
     <demo-snippet class="centered-demo">
       <template>
         <dom-bind>
           <template>
-            <paper-tags-input id="control" 
-            label="input label" 
-            show-counter="tags" 
-            items='["hello", "new"]' 
-            value="{{value}}" 
-            value-join="{{valueJoin}}" 
+            <paper-tags-input id="control"
+            label="input label"
+            show-counter="tags"
+            items='["hello", "new"]'
+            value="{{value}}"
+            value-join="{{valueJoin}}"
             maxLength="10"></paper-tags-input>
             <div>
               <div>value: {{valueJoin}}</div>
@@ -81,6 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </demo-snippet>
   </div>
+
   <div class="vertical-section-container centered">
     <h4>paper-tags-dropdown</h4>
     <demo-snippet class="centered-demo">
@@ -100,6 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </demo-snippet>
   </div>
+
   <div class="vertical-section-container centered">
     <h4>paper-tags-dropdown string array</h4>
     <demo-snippet class="centered-demo">
@@ -145,7 +147,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }];
 
     tagDropdown.$.control.getTagStyle = function(item) {
-      console.info("ITEM", item);
+      // console.info("ITEM", item);
       return 'background-color: red; color: white;'
     }
 
@@ -154,11 +156,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }, 100);
 
     tagDropdown.$.control.addEventListener('tag-removed', function(e, d) {
-      console.log('tag-removed', e, d);
+      // console.log('tag-removed', e, d);
     }.bind(this));
 
     tagDropdown.$.control.addEventListener('tag-added', function(e, d) {
-      console.log('tag-added', e, d);
+      // console.log('tag-added', e, d);
     }.bind(this));
   });
   </script>
